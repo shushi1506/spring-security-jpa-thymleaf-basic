@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <link rel="stylesheet" href="../../static/css/w3.css" th:href="@{/css/w3.css}">
+    <link rel="icon" href="../../static/image/favicon.ico" th:href="@{/image/favicon.ico}"/>
+    <link rel="stylesheet" href="../../static/css/home/base.css" th:href="@{/css/home/base.css}">
+    <link rel="stylesheet" href="../../static/css/home/vendor.css" th:href="@{/css/home/vendor.css}">
+    <link rel="stylesheet" href="../../static/css/home/main.css" th:href="@{/css/home/main.css}">
+    <script src="../../static/js/home/modernizr.js" th:src="@{/js/home/modernizr.js}"></script>
+    <script src="../../static/js/home/pace.min.js" th:src="@{/js/home/pace.min.js}"></script>
+</head>
+
+<body>
+<!--<div class="w3-top">-->
+<!--<div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">-->
+<!--<a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>-->
+<!--&lt;!&ndash; Right-sided navbar links. Hide them on small screens &ndash;&gt;-->
+<!--<div class="w3-right w3-hide-small">-->
+<!--<a href="#about" class="w3-bar-item w3-button">About</a>-->
+<!--<a th:href="@{/products}" class="w3-bar-item w3-button">Menu</a>-->
+<!--<a href="#contact" class="w3-bar-item w3-button">Contact</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<div th:replace="layout :: site-top"></div>
+<!--<header th:replace="layout :: site-header"></header>-->
+
+<section class="s-content">
+    <div th:if="${success}"
+         class="row alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <span th:text="${success}"></span>
+    </div>
+    <div class="row masonry-wrap">
+        <div class="masonry">
+            <div class="grid-sizer"></div>
+            <article class="masonry__brick entry format-standard aos-init aos-animate" data-aos="fade-up"
+                     th:each="p : ${products.pageList}">
+                <div class="entry__thumb">
+                    <a th:href="@{/products/view/{id}/(id=${p.id})}" class="entry__thumb-link">
+                        <img th:if="${p.id} % 2==0" src="../../static/image/home/thumbs/masonry/lamp-400.jpg"
+                             th:src="@{/image/home/thumbs/masonry/{image}/(image=${p.image}+'.jpg')}"
+                             th:attr="srcset=@{/image/home/thumbs/masonry/{image}/(image=${p.image}+'-400.jpg')}+' 1x, '+ @{/image/home/thumbs/masonry/{image}/(image=${p.image}+'-800.jpg')} +' 2x' "
+                             alt="">
+                        <img th:if="${p.id} % 2!=0" src="../../static/image/home/thumbs/masonry/tulips-400.jpg"
+                             th:src="@{/image/home/thumbs/masonry/{image}/(image=${p.image}+'.jpg')}"
+                             th:attr="srcset=@{/image/home/thumbs/masonry/{image}/(image=${p.image}+'-400.jpg')}+' 1x, '+ @{/image/home/thumbs/masonry/{image}/(image=${p.image}+'-800.jpg')} +' 2x' "
+                             alt="">
+                    </a>
+                </div>
+
+                <div class="entry__text">
+                    <div class="entry__header">
+
+                        <div class="entry__date">
+                            <a href="#about">December 15, 2017</a>
+                        </div>
+                        <h1 class="entry__title"><a href="#about" th:text="${p.tenSanPham}"></a></h1>
+
+                    </div>
+                    <div class="entry__excerpt">
+                        <p th:text="${p.moTa}">
+
+                        </p>
+                    </div>
+                    <!--<div class="entry__meta">-->
+                    <!--<span class="entry__meta-links">-->
+                    <!--<a href="category.html">Design</a>-->
+                    <!--<a href="category.html">Photography</a>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                </div>
+
+            </article> <!-- end article -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-full">
+            <nav class="pgn">
+                <ul>
+                    <!--<li th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">-->
+                        <!--<a class="page-link" th:href="@{/products}">First</a>-->
+                    <!--</li>-->
+                    <!--<li-->
+                            <!--th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">-->
+                        <!--<a class="page-link" aria-label="Previous"-->
+                           <!--th:href="@{|${baseUrl}${currentIndex - 1}|}"-->
+                           <!--title='Go to previous page'><span aria-hidden="true">«</span>-->
+                            <!--<span class="sr-only">Previous</span></a>-->
+                    <!--</li>-->
+                    <!--<li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"-->
+                        <!--th:class="${item == currentIndex ? 'page-item active' :'page-item' }">-->
+                        <!--<a class="page-link" th:href="@{|${baseUrl}${item}|}"> <span-->
+                                <!--th:text='${item}'>1</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li-->
+                            <!--th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">-->
+                        <!--<a class="page-link" aria-label="Next"-->
+                           <!--th:href="@{|${baseUrl}${currentIndex + 1}|}" title='Go to next page'><span-->
+                                <!--aria-hidden="true">»</span> <span class="sr-only">Next</span></a>-->
+                    <!--</li>-->
+                    <!--<li-->
+                            <!--th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">-->
+                        <!--<a class="page-link" th:href="@{|${baseUrl}${totalPageCount}|}">Last</a>-->
+                    <!--</li>-->
+                    <li th:class="${currentIndex ==1}? 'disable' : ''">
+                        <span th:if="${currentIndex == 1}">First</span>
+                        <a th:if="${currentIndex != 1}" th:href="@{/products/page/1}"
+                           class="pgn__prev">First
+                        </a>
+                    </li>
+                    <li th:class="${currentIndex !=1}? '' : 'disable'">
+                        <span th:if="${currentIndex == 1}"><<</span>
+                        <a th:if="${currentIndex != 1}" th:href="@{|${baseUrl}${currentIndex-1}|"
+                           th:title="'Go to the previous'"
+                           th:class="'pgn__prev'" th:text="<<">
+                        </a>
+                    </li>
+                    <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                        th:class="${item == currentIndex ? 'active' : ''}">
+                        <span th:if="${item == currentIndex}" th:text="${item}"></span>
+                        <a th:if="${item != currentIndex}" th:href="@{|${baseUrl}${item}|}"  th:class="'pgn__num'">
+                            <span th:text="${item}">1</span>
+                        </a>
+                    </li>
+                    <li th:class="${currentIndex !=totalPageCount}? '' : 'disable'">
+                        <span th:if="${currentIndex == totalPageCount}">>></span>
+                        <a th:if="${currentIndex != totalPageCount}" th:href="@{|${baseUrl}${currentIndex + 1}|}"
+                           th:title="'Go to the next page'"
+                           th:class="'pgn__next'">>>
+                        </a>
+                    </li>
+                    <li th:class="${currentIndex ==totalPageCount}? 'disable' : ''">
+                        <span th:if="${currentIndex == totalPageCount}">Last</span>
+                        <a th:if="${currentIndex != totalPageCount}" th:href="@{|${baseUrl}${totalPageCount}|}"
+                           th:class="'pgn__next'">Last
+                        </a>
+                    </li>
+                    <!--<li><a class="pgn__num" href="#0">1</a></li>-->
+                    <!--<li><span class="pgn__num current">2</span></li>-->
+                    <!--<li><a class="pgn__num" href="#0">3</a></li>-->
+                    <!--<li><a class="pgn__num" href="#0">4</a></li>-->
+                    <!--<li><a class="pgn__num" href="#0">5</a></li>-->
+                    <!--<li><span class="pgn__num dots">…</span></li>-->
+                    <!--<li><a class="pgn__num" href="#0">8</a></li>-->
+                    <!--<li><a class="pgn__next" href="#0">Next</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<script src="../../static/js/home/jquery-3.2.1.min.js" th:src="@{js/home/jquery-3.2.1.min.js}"></script>
+<script src="../../static/js/home/plugins.js" th:src="@{js/home/plugins.js}"></script>
+<script src="../../static/js/home/main.js" th:src="@{js/home/main.js}"></script>
+</body>
+</html>

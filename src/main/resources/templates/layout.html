@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="site-head">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="../static/css/w3.css" th:href="@{/css/w3.css}">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="icon" href="../static/image/favicon.ico" th:href="@{/image/favicon.ico}"/>
+    <script src="../static/js/jquery-3.1.0.min.js" th:src="@{/js/jquery-3.1.0.min.js}"></script>
+    <script src="../static/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>
+
+
+    <!--<meta th:include="this :: head" th:remove="tag"/>-->
+</head>
+<body>
+<!-- Navbar (sit on top) -->
+<div th:fragment="site-top" class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>
+        <!-- Right-sided navbar links. Hide them on small screens -->
+        <div class="w3-right w3-hide-small">
+            <a href="#about" class="w3-bar-item w3-button">About</a>
+            <a th:href="@{/products}" class="w3-bar-item w3-button">Menu</a>
+            <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header th:fragment="site-header" class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+    <img class="w3-image" src="https://www.w3schools.com/w3images/hamburger.jpg" alt="Hamburger Catering" width="1600" height="800">
+    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+        <h1 class="w3-xxlarge">Le Catering</h1>
+    </div>
+</header>
+
+<h1>Welcome</h1>
+<p>Welcome to the Spring MVC Blog.</p>
+<footer th:fragment="site-footer">
+    &copy; Spring MVC Blog System, 2016
+</footer>
+</body>
+</html>

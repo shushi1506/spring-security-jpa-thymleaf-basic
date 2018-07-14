@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head th:replace="layout :: site-head">
+    <title>Welcome to Spring MVC Blog</title>
+</head>
+
+<body>
+<div th:replace="layout :: site-top"></div>
+<div class="container">
+    <p th:text="${product.tenSanPham}"></p>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>
