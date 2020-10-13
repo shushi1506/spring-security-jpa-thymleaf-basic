@@ -31,7 +31,8 @@ public class GoogleUtils {
         String response = Request.Post(link)
                 .bodyForm(Form.form().add("client_id", env.getProperty("google.app.id"))
                         .add("client_secret", env.getProperty("google.app.secret"))
-                        .add("redirect_uri", env.getProperty("google.redirect.uri")).add("code", code)
+                        .add("redirect_uri", env.getProperty("google.redirect.uri"))
+                        .add("code", code)
                         .add("grant_type", "authorization_code").build())
                 .execute().returnContent().asString();
         ObjectMapper mapper = new ObjectMapper();

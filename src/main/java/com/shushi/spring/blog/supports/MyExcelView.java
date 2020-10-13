@@ -49,9 +49,29 @@ public class MyExcelView extends AbstractXlsxView {
             sheet.autoSizeColumn(i);
             Cell cell = header.createCell(i);
             cell.setCellValue(colums[i]);
+            Drawing drawing = cell.getSheet().createDrawingPatriarch();
+            CreationHelper factory = cell.getSheet().getWorkbook().getCreationHelper();
+            ClientAnchor anchor = factory.createClientAnchor();
+            anchor.setCol1(cell.getColumnIndex());
+            anchor.setCol2(cell.getColumnIndex() + 1);
+            anchor.setRow1(cell.getRowIndex());
+            anchor.setRow2(cell.getRowIndex() + 1);
+            anchor.setDx1(100);
+            anchor.setDx2(1000);
+            anchor.setDy1(100);
+            anchor.setDy2(1000);
+
+            // Create the comment and set the text+author
+            Comment comment = drawing.createCellComment(anchor);
+            RichTextString str = factory.createRichTextString("Đây là comment");
+            comment.setString(str);
+            comment.setAuthor("TURNUS");
+
+            cell.setCellComment(comment);
             cell.setCellStyle(style);
 
         }
+        sheet.createFreezePane(0,2);
         rowCount++;
         for (BlogDmTinhThanhEntity blog : blogDmTinhThanhEntities) {
             Row currencyRow = sheet.createRow(rowCount++);

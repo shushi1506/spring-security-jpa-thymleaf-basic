@@ -8,6 +8,7 @@ import java.util.Set;
  * @author anhbt 7/10/2018
  * com.shushi.spring.blog.models
  */
+
 public class User {
     private int id;
     private String email;

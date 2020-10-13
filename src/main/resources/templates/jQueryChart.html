@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <!--<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">-->
+    <link rel="stylesheet"
+          href="../static/css/plugins/chartist.min.css">
+    <!--<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js">-->
+    <!--</script>-->
+    <script src="../static/js/plugins/chartist.min.js"></script>
+</head>
+<body>
+<div> </div>
+<div style="width: 50ch">
+<div class="ct-chart ct-golden-section" id="chart1"></div>
+</div>
+    <div style="width: 50ch">
+<div class="ct-chart ct-golden-section" id="chart2"></div>
+    </div>
+        <div style="width: 50ch">
+<div class="ct-chart ct-golden-section" id="chart3"></div>
+        </div>
+<div style="width: 50ch">
+    <div class="ct-chart ct-golden-section" id="chart4"></div>
+</div>
+<div style="width: 50ch">
+    <div class="ct-chart ct-golden-section" id="chart5"></div>
+</div>
+<script>
+    // Initialize a Line chart in the container with the ID chart1
+    new Chartist.Line('#chart1', {
+        labels: [1, 2, 3, 4],
+        series: [[100, 120, 180, 200]]
+    });
+
+    // Initialize a Line chart in the container with the ID chart2
+    new Chartist.Bar('#chart2', {
+        labels: [1, 2, 3, 4],
+        series: [[5, 2, 8, 3]]
+    });
+    var data = {
+        series: [5, 3, 4]
+    };
+    var lb={
+        labelInterpolationFnc:['Apple','LG','SamSung']
+    };
+    var sum = function(a, b) { return a + b };
+
+    new Chartist.Pie('#chart3', data, {
+        labelInterpolationFnc: function(value) {
+            return Math.round(value / data.series.reduce(sum) * 100) + '%';
+        }
+    });
+    new  Chartist.Pie('#chart4',{
+        series: [{
+            value: 20,
+            name: 'Series 1',
+//            className: 'my-custom-class-one',
+            meta: 'Meta One'
+        }, {
+            value: 10,
+            name: 'Series 2',
+//            className: 'my-custom-class-two',
+            meta: 'Meta Two',
+            label: 'ABC'
+        }, {
+            value: 70,
+            name: 'Series 3',
+//            className: 'my-custom-class-three',
+            meta: 'Meta Three'
+        }]
+    });
+    new Chartist.Pie('#chart5', data);
+</script>
+</body>
+</html>

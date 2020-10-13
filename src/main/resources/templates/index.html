@@ -8,10 +8,57 @@
 
 <body>
 <div th:replace="layout :: site-top"></div>
-<header th:replace="layout :: site-header"></header>
+<!--<header th:replace="layout :: site-header"></header>-->
 <!--<h1>Welcome to Spring MVC</h1>-->
 <!--Now is: <b th:text="${execInfo.now.time}">date and time</b>-->
 <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+
+            <div class="item active">
+                <img th:src="@{/image/car1.jpg}" alt="Los Angeles" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>LA is always so much fun!</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img th:src="@{/image/car2.jpg}" alt="Chicago" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3>Chicago</h3>
+                    <p>Thank you, Chicago!</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img th:src="@{/image/car3.jpg}" alt="New York" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
     <a th:href="@{/myexcel}">
         <button>Click here Excel</button>
     </a>
@@ -21,6 +68,19 @@
     <a th:href="@{/home}" th:value="Home">Home</a>
 </div>
 <div class="container">
+    <p th:if="${abc != null}" th:value="${abc}" th:text="${abc}" ></p>
+    <div th:if="${errors != null}" th:each="e : ${errors}">
+        <p class="error" th:value="${e.defaultMess}" th:text="${e.defaultMess}"></p>
+    </div>
+    <form action="#" th:action="@{/saveStudent}" th:object="${student}"
+          method="post">
+        <input  name="id" />
+        <input  name="name" />
+        <input  name="gender">
+        <input  name="percentage">
+        <!-- Remaining part of HTML -->
+        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+    </form>
     <input type="checkbox" th:onclick="${'toggle(this);'}" name="abc"/> Toggle All<br/>
 
     <input type="checkbox" name="foo" value="bar1" th:onclick="${'untoggle();'}"> Bar 1<br/>
@@ -28,8 +88,7 @@
     <input type="checkbox" name="foo" value="bar3" th:onclick="${'untoggle();'}"> Bar 3<br/>
     <input type="checkbox" name="foo" value="bar4" th:onclick="${'untoggle();'}"> Bar 4<br/>
 
-    <a th:href="@{/logout}" th:value="Logout">Logout
-    </a>
+    <a th:href="@{/logout}" th:value="Logout">Logout</a>
     <img th:src="@{https://platform-lookaside.fbsbx.com/platform/profilepic/?asid={idFb}&height=50&width=50&ext=1531642761&hash=AeTmb4P4akVb6Lnm(idFb=${idFb})}">
     <div class="card">
         <div class="card-body">
@@ -46,22 +105,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!--<div th:each="p : ${dmTinhThanh}">-->
-                    <!--<tr th:if="${p.id} % 2==0" class="danger">-->
-                    <!--<a th:href="@{/tinhThanh/view/{id}/(id=${p.id})}">-->
-                    <!--<td th:text="${p.maTinhThanh}"></td>-->
-                    <!--</a>-->
-                    <!--<td th:text="${p.tenTinhThanh}"></td>-->
-                    <!--<td th:text="${p.maVuTaiChinh}"></td>-->
-                    <!--</tr>-->
-                    <!--<tr th:if="${p.id} % 2!=0" class="warning">-->
-                    <!--<a th:href="@{/tinhThanh/view/{id}/(id=${p.id})}">-->
-                    <!--<td th:text="${p.maTinhThanh}"></td>-->
-                    <!--</a>-->
-                    <!--<td th:text="${p.tenTinhThanh}"></td>-->
-                    <!--<td th:text="${p.maVuTaiChinh}"></td>-->
-                    <!--</tr>-->
-                    <!--</div>-->
                     <tr th:each="p : ${dmTinhThanh}">
                         <td th:text="${p.maTinhThanh}"></td>
                         <td th:text="${p.tenTinhThanh}"></td>
@@ -80,11 +123,6 @@
             </div>
         </div>
     </div>
-    <!--<a href="#"  th:text="${p.tenTinhThanh}" th:href="@{/tinhThanh/view/{id}/(id=${p.id})}">-->
-    <!--Work Begins on-->
-    <!--HTML5.1-->
-    <!--</a>-->
-    <br>
 </div>
 
 <footer>

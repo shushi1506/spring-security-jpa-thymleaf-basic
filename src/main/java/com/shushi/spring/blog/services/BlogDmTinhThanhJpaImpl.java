@@ -34,4 +34,8 @@ public class BlogDmTinhThanhJpaImpl implements BlogDmTinhThanhService {
     public BlogDmTinhThanhEntity findOne(Long id) {
         return blogDmTinhThanhRepository.getOne(id);
     }
+    @Override
+    public Page<BlogDmTinhThanhEntity> findBySearch(String tenTinhThanh,Pageable pageRequest) {
+        return blogDmTinhThanhRepository.findByTenTinhThanhContains(pageRequest,tenTinhThanh);
+    }
 }

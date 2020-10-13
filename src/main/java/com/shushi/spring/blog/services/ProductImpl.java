@@ -28,7 +28,6 @@ public class ProductImpl implements ProductService {
         add(new Product(13,"Jean13","BTA06",100,"Cái","fuji",4,"Đen;Đỏ","Chất au",10,69000));
         add(new Product(14,"Crop top14","BTA07",100,"Cái","cookies",0,"Đen;Đỏ","Chất hịn",105,79000));
         add(new Product(15,"Crop top15","BTA07",100,"Cái","cookies",0,"Đen;Đỏ","Chất hịn",105,79000));
-
     }};
     @Override
     public List<Product> findAll() {

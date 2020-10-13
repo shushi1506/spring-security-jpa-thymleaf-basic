@@ -15,4 +15,5 @@ public interface BlogDmTinhThanhService {
     List<BlogDmTinhThanhEntity>findAll();
     Page<BlogDmTinhThanhEntity> findPage(Pageable pageable);
     BlogDmTinhThanhEntity findOne(Long id);
+    Page<BlogDmTinhThanhEntity> findBySearch(String tenTinhThanh,Pageable pageable);
 }

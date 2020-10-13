@@ -23,4 +23,6 @@ public interface BlogDmTinhThanhRepository extends JpaRepository<BlogDmTinhThanh
 
     @Override
     BlogDmTinhThanhEntity getOne(Long aLong);
+
+    Page<BlogDmTinhThanhEntity>findByTenTinhThanhContains(Pageable pageable,String tenTinhThanh);
 }

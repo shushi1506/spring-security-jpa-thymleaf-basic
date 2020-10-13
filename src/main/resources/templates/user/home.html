@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script  th:src="@{/js/jquery.twbsPagination.min.js}"></script>-->
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <!--<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var recPerPage = /*[[${numbers_page}]]*/ 5;
+        if (recPerPage == null) {
+            recPerPage = 5;
+        }
+    </script>
+
+</head>
+<body>
+<script src="../../static/js/jssor.slider-27.4.0.min.js" th:src="@{/js/jssor.slider-27.4.0.min.js}"></script>
+<!--<script src="../../static/js/paginationJS.js" th:src="@{/js/paginationJS.js}"></script>-->
+
+<script type="text/javascript">
+    $(function () {
+        var thHeight = $("table#demo-table th:first").height();
+        $("table#demo-table th").resizable({
+            handles: "e",
+            minHeight: thHeight,
+            maxHeight: thHeight,
+            minWidth: 40,
+            resize: function (event, ui) {
+                var sizerID = "#" + $(event.target).attr("id") + "-sizer";
+                $(sizerID).width(ui.size.width);
+            }
+        });
+    });
+    jssor_1_slider_init = function () {
+
+        var jssor_1_SlideshowTransitions = [
+            {
+                $Duration: 800,
+                x: 0.3,
+                $During: {$Left: [0.3, 0.7]},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: -0.3,
+                $SlideOut: true,
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: -0.3,
+                $During: {$Left: [0.3, 0.7]},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                $SlideOut: true,
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: 0.3,
+                $During: {$Top: [0.3, 0.7]},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: -0.3,
+                $SlideOut: true,
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: -0.3,
+                $During: {$Top: [0.3, 0.7]},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: 0.3,
+                $SlideOut: true,
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                $Cols: 2,
+                $During: {$Left: [0.3, 0.7]},
+                $ChessMode: {$Column: 3},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                $Cols: 2,
+                $SlideOut: true,
+                $ChessMode: {$Column: 3},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: 0.3,
+                $Rows: 2,
+                $During: {$Top: [0.3, 0.7]},
+                $ChessMode: {$Row: 12},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: 0.3,
+                $Rows: 2,
+                $SlideOut: true,
+                $ChessMode: {$Row: 12},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: 0.3,
+                $Cols: 2,
+                $During: {$Top: [0.3, 0.7]},
+                $ChessMode: {$Column: 12},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                y: -0.3,
+                $Cols: 2,
+                $SlideOut: true,
+                $ChessMode: {$Column: 12},
+                $Easing: {$Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                $Rows: 2,
+                $During: {$Left: [0.3, 0.7]},
+                $ChessMode: {$Row: 3},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: -0.3,
+                $Rows: 2,
+                $SlideOut: true,
+                $ChessMode: {$Row: 3},
+                $Easing: {$Left: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                y: 0.3,
+                $Cols: 2,
+                $Rows: 2,
+                $During: {$Left: [0.3, 0.7], $Top: [0.3, 0.7]},
+                $ChessMode: {$Column: 3, $Row: 12},
+                $Easing: {$Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                x: 0.3,
+                y: 0.3,
+                $Cols: 2,
+                $Rows: 2,
+                $During: {$Left: [0.3, 0.7], $Top: [0.3, 0.7]},
+                $SlideOut: true,
+                $ChessMode: {$Column: 3, $Row: 12},
+                $Easing: {$Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                $Delay: 20,
+                $Clip: 3,
+                $Assembly: 260,
+                $Easing: {$Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                $Delay: 20,
+                $Clip: 3,
+                $SlideOut: true,
+                $Assembly: 260,
+                $Easing: {$Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                $Delay: 20,
+                $Clip: 12,
+                $Assembly: 260,
+                $Easing: {$Clip: $Jease$.$InCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            },
+            {
+                $Duration: 800,
+                $Delay: 20,
+                $Clip: 12,
+                $SlideOut: true,
+                $Assembly: 260,
+                $Easing: {$Clip: $Jease$.$OutCubic, $Opacity: $Jease$.$Linear},
+                $Opacity: 2
+            }
+        ];
+
+        var jssor_1_options = {
+            $AutoPlay: 1,
+            $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+            },
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$
+            }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+        /*#region responsive code begin*/
+
+        var MAX_WIDTH = 980;
+
+        function ScaleSlider() {
+            var containerElement = jssor_1_slider.$Elmt.parentNode;
+            var containerWidth = containerElement.clientWidth;
+
+            if (containerWidth) {
+
+                var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                jssor_1_slider.$ScaleWidth(expectedWidth);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+
+        ScaleSlider();
+
+        $Jssor$.$AddEvent(window, "load", ScaleSlider);
+        $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+        $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+        /*#endregion responsive code end*/
+    };
+
+    modal_init = function () {
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+// When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+// When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    };
+
+
+</script>
+<style>
+    /*jssor slider loading skin spin css*/
+    .jssorl-009-spin img {
+        animation-name: jssorl-009-spin;
+        animation-duration: 1.6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes jssorl-009-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /*jssor slider arrow skin 051 css*/
+    .jssora051 {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .jssora051 .a {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 360;
+        stroke-miterlimit: 10;
+    }
+
+    .jssora051:hover {
+        opacity: .8;
+    }
+
+    .jssora051.jssora051dn {
+        opacity: .5;
+    }
+
+    .jssora051.jssora051ds {
+        opacity: .3;
+        pointer-events: none;
+    }
+
+    /*jssor slider thumbnail skin 111 css*/
+    .jssort111 .p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100px;
+        background-color: #000;
+    }
+
+    .jssort111 .p img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .jssort111 .t {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        opacity: .45;
+    }
+
+    .jssort111 .p:hover .t {
+        opacity: .8;
+    }
+
+    .jssort111 .pav .t, .jssort111 .pdn .t, .jssort111 .p:hover.pdn .t {
+        opacity: 1;
+    }
+
+    .jssort111 .ti {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+        background-color: rgba(0, 0, 0, .3)
+    }
+
+    .jssort111 .pav .ti, .jssort111 .pdn .ti, .jssort111 .p:hover.pdn .ti {
+        color: #000;
+        background-color: rgba(255, 255, 255, .6);
+    }
+</style>
+
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="703350680001913"
+     logged_in_greeting="Xin chào! Tôi có thể giúp gì cho bạn?"
+     logged_out_greeting="Xin chào! Tôi có thể giúp gì cho bạn?">
+</div>
+
+<!--<div id="bartop" class="testul">-->
+<!--<div style="align-content: center; display: block;-->
+<!--margin-left: auto;-->
+<!--margin-right: auto;-->
+<!--width: 53%;">-->
+<!--<p class="testli"><a class="active" href="#home">Home</a></p>-->
+<!--<p class="testli"><a href="#news">News</a></p>-->
+<!--<p class="testli"><a href="#contact">Contact</a></p>-->
+<!--</div>-->
+<!--</div>-->
+<header class="main_h">
+
+    <div class="row">
+        <a class="logo" href="#">L/F</a>
+
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href=".sec01">Section 01</a></li>
+                <li><a href=".sec02">Section 02</a></li>
+                <li><a href=".sec03">Section 03</a></li>
+                <li><a href=".sec04">Section 04</a></li>
+            </ul>
+        </nav>
+
+    </div> <!-- / row -->
+
+</header>
+
+<div id="jssor_1"
+     style="position:relative;margin:0 auto;top:0px;left:0px;width:auto;height:480px;overflow:hidden;visibility:hidden; z-index: -1">
+    <!-- Loading Screen -->
+    <div data-u="loading" class="jssorl-009-spin"
+         style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+        <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"
+             th:src="@{image/img/sping.svg}"/>
+    </div>
+    <div data-u="slides"
+         style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+        <div>
+            <img data-u="image" th:src="@{/image/img/022.jpg}" src="../../static/image/img/022.jpg" alt="ABC"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/022-s200x100.jpg}"
+                     src="../../static/image/img/022-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/023.jpg}" src="../../static/image/img/023.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/023-s200x100.jpg}"
+                     src="../../static/image/img/023-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/024.jpg}" src="../../static/image/img/024.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/024-s200x100.jpg}"
+                     src="../../static/image/img/024-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/025.jpg}" src="../../static/image/img/025.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/025-s200x100.jpg}"
+                     src="../../static/image/img/025-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/026.jpg}" src="../../static/image/img/026.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/026-s200x100.jpg}"
+                     src="../../static/image/img/026-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/027.jpg}" src="../../static/image/img/027.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/027-s200x100.jpg}"
+                     src="../../static/image/img/027-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/021.jpg}" src="../../static/image/img/021.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/021-s200x100.jpg}"
+                     src="../../static/image/img/021-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/028.jpg}" src="../../static/image/img/028.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/028-s200x100.jpg}"
+                     src="../../static/image/img/028-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/029.jpg}" src="../../static/image/img/029.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/029-s200x100.jpg}"
+                     src="../../static/image/img/029-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/030.jpg}" src="../../static/image/img/030.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/030-s200x100.jpg}"
+                     src="../../static/image/img/030-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/031.jpg}" src="../../static/image/img/031.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/031-s200x100.jpg}"
+                     src="../../static/image/img/031-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+        <div>
+            <img data-u="image" th:src="@{/image/img/032.jpg}" src="../../static/image/img/032.jpg"/>
+            <div data-u="thumb">
+                <img data-u="thumb" th:src="@{/image/img/032-s200x100.jpg}"
+                     src="../../static/image/img/032-s200x100.jpg"/>
+                <div class="ti">Slide Description</div>
+            </div>
+        </div>
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort111"
+         style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;cursor:default;" data-autocenter="1"
+         data-scale-bottom="0.75">
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div data-u="thumbnailtemplate" class="t"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Arrow Navigator -->
+    <div data-u="arrowleft" class="jssora051" style="width:55px;height:55px;top:162px;left:25px;" data-autocenter="2"
+         data-scale="0.75" data-scale-left="0.75">
+        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+        </svg>
+    </div>
+    <div data-u="arrowright" class="jssora051" style="width:55px;height:55px;top:162px;right:25px;" data-autocenter="2"
+         data-scale="0.75" data-scale-right="0.75">
+        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+        </svg>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <!--<div class="col-sm-1 col-lg-2 col-md-2">-->
+        <!--<div class="row">-->
+        <!--<div class="col-sm-12 col-lg-12">-->
+        <!--<img src="../../static/image/home/sample-image.jpg" th:src="@{/image/home/sample-image.jpg}"-->
+        <!--alt="No Image"-->
+        <!--style="width: 100%;">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+        <!--<div class="col-sm-12 col-lg-12">-->
+        <!--<img src="../../static/image/home/sample-image.jpg" th:src="@{/image/home/sample-image.jpg}"-->
+        <!--alt="No Image"-->
+        <!--style="width: 100%;">-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <form th:action="@{/test/home/search}" method="post" th:object="${search}" >
+                    <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" name="search" title="Search...">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div th:each="p : ${content}" class="col-sm-12 col-lg-2 col-md-4">
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <div class="thumbex">
+                                    <div class="thumbnail"><a href="javascript:void(0)"> <img src="../../static/image/product1.jpg" th:src="@{/image/product{id}.jpg(id=${p.id}%5)}"><span th:text="${p.tenTinhThanh}"></span></a></div>
+                                </div>
+                            </div>
+                            <!--<a href="#p1">-->
+                                <!--<img src="../../static/image/product1.jpg" th:src="@{/image/product1.jpg}" alt="p1">-->
+                            <!--</a>-->
+                            <!--<p style="text-align: center;margin-top: 1%;font-size: 9%" th:text="${p.tenTinhThanh}">-->
+                            <!--</p>-->
+                            <!--<p style="text-align: center;margin-top: 1%;font-size: 9%" th:text="${p.tenTinhThanh}">-->
+                            <!--</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 col-md-6">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/test/home/1}">First</a>
+                        </li>
+                        <li th:class="${hasPrevious}? 'page-item':'page-item no-drop'">
+                            <a class="page-link" th:href="@{/test/home(numbers_page=${currentIndex}-1,per_page=${select_val})}">&laquo;</a>
+                            <!--<a class="page-link" th:unless="${hasPrevious}" th:class="">&laquo;</a>-->
+                        </li>
+                        <li class="page-item" th:each="p : ${#numbers.sequence( 1,listElement)}"
+                            th:class="${p}==${currentIndex}? 'page-item active':'page-item'">
+                            <a class="page-link" th:href="@{/test/home(numbers_page=${p},per_page=${perPage})}" th:text="${p}"></a>
+                        </li>
+                        <li th:class="${hasNext}? 'page-item':'page-item disabled'">
+                            <a class="page-link" th:href="@{/test/home(numbers_page=${currentIndex}+1,per_page=${perPage})}">&raquo;</a>
+                            <!--<a class="page-link" th:unless="${hasNext}">&raquo;</a>-->
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/test/home(numbers_page=${listElement},per_page=${perPage})}">Last</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-6 col-md-6 justify-content-center">
+                    <form th:action="@{/test/home/selected}" method="post" >
+                        <select name="select_val" onchange="this.form.submit()">
+                            <option th:value="10" th:text="10" th:selected="${perPage==10}"></option>
+                            <option th:value="20" th:text="20" th:selected="${perPage==20}"></option>
+                            <option th:value="30" th:text="30" th:selected="${perPage==30}"></option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-sm-1 col-lg-2 col-md-2">-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-12 col-md-12">-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<!--<div class="content">-->
+<!--<div class="banner-left">-->
+<!--<img src="../../static/image/home/sample-image.jpg" th:src="@{/image/home/sample-image.jpg}" alt="No Image"-->
+<!--style="width: 100%;">-->
+<!--<img src="../../static/image/home/wheel-500.jpg" th:src="@{/image/home/wheel-500.jpg}" alt="No Image"-->
+<!--style="width: 100%;">-->
+<!--</div>-->
+<!--<div class="banner-content">-->
+
+<!--<section style="margin-top: 5%">-->
+<!--<button id="myBtn">Open Modal</button>-->
+<!--&lt;!&ndash; The Modal &ndash;&gt;-->
+<!--<div id="myModal" class="modal">-->
+
+<!--&lt;!&ndash; Modal content &ndash;&gt;-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<span class="close">&times;</span>-->
+<!--<h2>Modal Header</h2>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<p>Some text in the Modal Body</p>-->
+<!--<p>Some other text...</p>-->
+<!--</div>-->
+<!--<div class="modal-footer">-->
+<!--<h3>Modal Footer</h3>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="wrapper" id="demo">-->
+<!--<div th:each="p : ${content}" style="border: 1px solid #9e475a;border-radius: 4px;">-->
+<!--<a href="#p1">-->
+<!--<img src="../../static/image/product1.jpg" th:src="@{/image/product1.jpg}" alt="p1" style="width: 100%;height: 80%;margin-top: 0px;">-->
+<!--</a>-->
+<!--<p style="text-align: center;margin-top: 3%;font-size: 24px" th:text="${p.tenTinhThanh}">-->
+<!--</p>-->
+<!--<p style="text-align: center;margin-top: 1%;font-size: 24px" th:text="${p.tenTinhThanh}">-->
+<!--</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div th:class="'table-responsive'" class="table-responsive">-->
+<!--<table id="demo-table" class="table table-bordered table table-hover cell text-center" style="width:100%">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th id='column-header-1'>Mã Tỉnh Thành<div id='column-header-1-sizer'></div></th>-->
+<!--<th id='column-header-2'>Tên Tỉnh Thành<div id='column-header-2-sizer'></div></th>-->
+<!--<th id='column-header-3'>Mã Vụ Tài Chính<div id='column-header-3-sizer'></div></th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody >-->
+<!--<tr th:each="p : ${content}">-->
+<!--<td th:text="${p.maTinhThanh}"></td>-->
+<!--<td th:text="${p.tenTinhThanh}"></td>-->
+<!--<td th:text="${p.maVuTaiChinh}"></td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
+
+<!--<div style="margin-top: 5%">-->
+<!--<ul class="pagination justify-content-center">-->
+<!--<li class="page-item">-->
+<!--<a class="page-link" th:href="@{/test/home/1}">First</a>-->
+<!--</li>-->
+<!--<li th:class="${hasPrevious}? 'page-item':'page-item disabled'">-->
+<!--<a class="page-link"  th:href="@{/test/home/{page}(page=${currentIndex}-1)}">&laquo;</a>-->
+<!--&lt;!&ndash;<a class="page-link" th:unless="${hasPrevious}" th:class="">&laquo;</a>&ndash;&gt;-->
+<!--</li>-->
+<!--<li class="page-item" th:each="p : ${#numbers.sequence( 1,listElement)}" th:class="${p}==${currentIndex}? 'page-item active':'page-item'" >-->
+<!--<a class="page-link" th:href="@{/test/home/{page}(page=${p})}" th:text="${p}"></a>-->
+<!--</li>-->
+<!--<li th:class="${hasNext}? 'page-item':'page-item disabled'">-->
+<!--<a class="page-link"  th:href="@{/test/home/{page}(page=${currentIndex}+1)}">&raquo;</a>-->
+<!--&lt;!&ndash;<a class="page-link" th:unless="${hasNext}">&raquo;</a>&ndash;&gt;-->
+<!--</li>-->
+<!--<li class="page-item">-->
+<!--<a class="page-link" th:href="@{/test/home/{page}(page=${listElement})}">Last</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--</section>-->
+
+<!--</div>-->
+<!--<div class="banner-right">-->
+<!--<div id="listingTable"></div>-->
+<!--<a href="javascript:prevPage()" id="btn_prev">Prev</a>-->
+<!--<a href="javascript:nextPage()" id="btn_next">Next</a>-->
+<!--page: <span id="page"></span>-->
+<!--<p th:if="${numbers_page != null}" th:value="${numbers_page}" th:text="${numbers_page}"></p>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<script type='text/javascript'>-->
+<!--window.onscroll = function() {myFunction()};-->
+<!--function myFunction(){-->
+<!--//Keep track of last scroll-->
+<!--var lastScroll = 0;-->
+<!--//Sets the current scroll position-->
+<!--var st = document.body.scrollTop;-->
+<!--//Determines up-or-down scrolling-->
+<!--if (st > lastScroll){-->
+<!--//Replace this with your function call for downward-scrolling-->
+<!--//                alert("DOWN");-->
+<!--document.getElementById("bartop").className = "testul2";-->
+<!--}-->
+<!--else {-->
+<!--//Replace this with your function call for upward-scrolling-->
+<!--//                alert("UP");-->
+<!--document.getElementById("bartop").className = "testul";-->
+<!--}-->
+<!--//Updates scroll position-->
+<!--lastScroll = st;-->
+<!--}-->
+<!--</script>-->
+<script>
+    // Sticky Header
+    $(window).scroll(function () {
+
+        if ($(window).scrollTop() > 100) {
+            $('.main_h').addClass('sticky');
+        } else {
+            $('.main_h').removeClass('sticky');
+        }
+    });
+
+    // Mobile Navigation
+    $('.mobile-toggle').click(function () {
+        if ($('.main_h').hasClass('open-nav')) {
+            $('.main_h').removeClass('open-nav');
+        } else {
+            $('.main_h').addClass('open-nav');
+        }
+    });
+
+    $('.main_h li a').click(function () {
+        if ($('.main_h').hasClass('open-nav')) {
+            $('.navigation').removeClass('open-nav');
+            $('.main_h').removeClass('open-nav');
+        }
+    });
+
+    // Navigation Scroll - ljepo radi materem
+    $('nav a').click(function (event) {
+        var id = $(this).attr("href");
+        var offset = 70;
+        var target = $(id).offset().top - offset;
+        $('html, body').animate({
+                scrollTop: target
+            },
+            500);
+        event.preventDefault();
+    });
+    //# sourceURL=pen.js
+</script>
+<script type="text/javascript" th:inline="javascript">jssor_1_slider_init();
+
+//modal_init();
+var displayRecords = [];
+
+function generate_table() {
+    var tr;
+    $('#emp_body').html('');
+    for (var i = 0; i < displayRecords.length; i++) {
+        tr = $('<tr/>');
+        tr.append("<td>" + displayRecords[i].maTinhThanh + "</td>");
+        tr.append("<td>" + displayRecords[i].tenTinhThanh + "</td>");
+        tr.append("<td>" + displayRecords[i].maVuTaiChinh + "</td>");
+        $('#emp_body').append(tr);
+    }
+}
+
+function apply_pagination() {
+    console.log("Call me");
+    /*<![CDATA[*/
+    var theList = /*[[${dmTinhThanh}]]*/ null;
+
+//    var strUser = $( "#numbers" ).val();
+    var $pagination = $('#pagination'),
+        totalRecords = theList.length,
+        records = theList,
+        page = 1,
+        totalPages = Math.ceil(totalRecords / recPerPage);
+    $pagination.twbsPagination({
+        totalPages: totalPages,
+        visiblePages: 6,
+        onPageClick: function (event, page) {
+            console.log("Total page:" + totalPages)
+            var displayRecordsIndex = Math.max(page - 1, 0) * recPerPage;
+            var endRec = (displayRecordsIndex) + recPerPage;
+            displayRecords = records.slice(displayRecordsIndex, endRec);
+            generate_table();
+        }
+    });
+}
+
+$(document).ready(function () {
+    $("#numbers").change(function () {
+        var color = $(this);
+        var y = parseInt(color);
+        var c = $("#numbers option:selected").text();
+        var d = parseInt(c);
+        console.log(y);
+        console.log(d);
+//        recPerPage=color.val();
+//        apply_pagination(d);
+        document.getElementById("myform").submit();
+    });
+});
+
+//window.onload=apply_pagination();
+</script>
+</body>
+</html>
