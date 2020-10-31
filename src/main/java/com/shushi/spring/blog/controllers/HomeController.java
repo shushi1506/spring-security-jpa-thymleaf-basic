@@ -74,8 +74,8 @@ public class HomeController {
     private SSOUtils ssoUtils;
     @Autowired
     ThietBiRepository thietBiRepository;
-    @Autowired
-    SessionRepository sessionFactory;
+//    @Autowired
+//    SessionRepository sessionFactory;
     @Autowired
     RedisOperationsSessionRepository redisOperationsSessionRepository;
     @Autowired
